@@ -1,6 +1,6 @@
-employee_id|department|lastname|years_with_company
-1|Engineering|Stevens|1
-2|Engineering|Jones|2
-3|Marketing|Smith|3
-4|Sales|Howard|1
-5|Engineering|Gonzales|2
+employee_id|department|lastname|years_with_company|salary|jobtitle|hiredate|managerId
+1|Engineering|Stevens|1|50000|manager|2000-02-18|2
+2|Engineering|Jones|2|70000|manager|1999-06-11|0
+3|Marketing|Smith|3|40000|clerk|1996-03-21|1
+4|Sales|Howard|1|30000|clerk|1980-12-17|2
+5|Engineering|Gonzales|2|60000|leader|1995-10-18|2

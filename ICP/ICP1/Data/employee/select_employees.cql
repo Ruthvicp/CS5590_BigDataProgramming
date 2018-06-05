@@ -1,1 +1,0 @@
-SELECT * FROM employees WHERE department='Engineering' ORDER BY lastname DESC, years_with_company DESC;

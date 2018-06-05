@@ -1,0 +1,38 @@
+CREATE TABLE employee (
+	employee_id int, department text, lastname text, years_with_company int, 
+	salary int, jobtitle text, hiredate date, managerId int,
+	PRIMARY KEY employee_id);
+	
+	-------------------------------------------------
+	
+	COPY employee (employee_id, department, lastname, years_with_company, salary, jobtitle,
+	hiredate, managerId) FROM 'C:\Users\ruthv\Documents\GitHub\BigDataProgramming\ICP\ICP1\Data\employee\employee_entries.csv' 
+	WITH HEADER=True AND DELIMITER='|';
+	
+	
+	INSERT INTO employee (employee_id, department, lastname, years_with_company, salary, jobtitle,
+	hiredate, managerId) VALUES(7,'dev', 'ruth', 3, 70000, 'developer', '2015-07-20', 2);
+	
+	
+	UPDATE employee SET lastname='pun',salary=90000 WHERE employee_id=7;
+	--------------------------------------------------
+
+	1. List the empno,ename,jobtitle,and hiredate of employee from the employee table.
+	select employee_id, lastname, jobtitle, hiredate from employee;
+	
+	2. List the name,salary of the employees who are clerks.
+	select lastname,salary from employee where jobtitle='clerk' ALLOW FILTERING;
+	
+	3. List the name,job,salary of every employee joined on ‘december 17,1980’
+	select lastname,jobtitle,salary from employee where hiredate='1980-12-17' ALLOW FILTERING;
+	
+	4. List name and annual salary of all the employees.
+	select lastname,salary from employee;
+	
+	5. List the department name & deptno for departments having deptno.>=20
+	select * from department where dept_no >= 20 allow filtering;
+	
+	6. Display employees’ names, salary and manager values of those employees whose salary is 500 from EMP table using SELECT statement.
+	select lastname, salary, managerId from employee where salary=50000 allow filtering;
+	-------------------------------------
+	
