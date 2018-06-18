@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.hadoop:hadoop-mapreduce-client-common:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/hadoop/hadoop-mapreduce-client-common/unknown/hadoop-mapreduce-client-common-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/hadoop/hadoop-mapreduce-client-common/unknown/hadoop-mapreduce-client-common-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/hadoop/hadoop-mapreduce-client-common/unknown/hadoop-mapreduce-client-common-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
