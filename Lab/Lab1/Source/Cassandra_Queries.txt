@@ -1,0 +1,15 @@
+create table netflix_users (user_id int, user_type text, user_name text, joined_date date, last_activity date, last_watched text, country text, genre text, Primary key (user_id));
+
+copy netflix_users (user_id, user_type, user_name, joined_date, last_activity, last_watched, country, genre) from 'C:\Users\ruthv\Documents\GitHub\BigDataProgramming\Lab\Lab1\Source\netflix.csv' with header=true and delimiter='|';
+ 
+Insert into netflix_users (user_id, user_type, user_name, joined_date, last_activity, last_watched, country, genre) values (5,'inactive','thanos','2015-04-14','2015-05-02','jurassic park','usa','comedy');
+ 
+select * from netflix_users where user_type = 'inactive' allow filtering;
+  
+select last_activity,genre  from netflix_users where user_type='paid' allow filtering;
+
+alter table netflix_users add trial_end_date date;
+
+update netflix_users set trial_end_date='2018-07-15' where user_id=2;
+
+select trial_end_date,genre,joined_date from netflix_users where user_id=2;
