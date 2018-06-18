@@ -1,0 +1,324 @@
+
+---------------------
+create table
+---------------------
+hbase(main):053:0> create 'location', 'name', 'parent', 'child'
+0 row(s) in 1.2070 seconds
+
+-----------------------------
+Insert into table
+-----------------------------
+hbase(main):054:0> put 'location','1','name','china'
+0 row(s) in 0.0570 seconds
+
+hbase(main):055:0> put 'location','5','name','shandong'
+0 row(s) in 0.0220 seconds
+
+hbase(main):056:0> put 'location','8','name','qingdao'
+0 row(s) in 0.0330 seconds
+
+hbase(main):057:0> put 'location','8','parent:1','nation'
+0 row(s) in 0.0260 seconds
+
+hbase(main):058:0> put 'location','8','parent:5','state'
+0 row(s) in 0.0260 seconds
+
+------------------------------
+Display results
+------------------------------
+
+hbase(main):059:0> get 'location','8'
+COLUMN                                               CELL                                                                                                                                                   
+ name:                                               timestamp=1528933714698, value=qingdao                                                                                                                 
+ parent:1                                            timestamp=1528933788845, value=nation                                                                                                                  
+ parent:5                                            timestamp=1528933798548, value=state                                                                                                                   
+3 row(s) in 0.0970 seconds
+
+hbase(main):060:0> put 'location','5','parent:1','nation'
+0 row(s) in 0.0320 seconds
+
+hbase(main):061:0> put 'location','5','child:7','city'
+0 row(s) in 0.0100 seconds
+
+hbase(main):062:0> put 'location','5','child:8','city'
+0 row(s) in 0.0220 seconds
+
+hbase(main):063:0> get 'location','5'
+COLUMN                                               CELL                                                                                                                                                   
+ child:7                                             timestamp=1528933888651, value=city                                                                                                                    
+ child:8                                             timestamp=1528933893901, value=city                                                                                                                    
+ name:                                               timestamp=1528933691110, value=shandong                                                                                                                
+ parent:1                                            timestamp=1528933846588, value=nation                                                                                                                  
+4 row(s) in 0.0430 seconds
+
+--------------------------------
+Insert more data
+--------------------------------
+
+hbase(main):064:0> put 'location','1','child:2','state'
+0 row(s) in 0.0410 seconds
+
+hbase(main):065:0> put 'location','1','child:3','state'
+0 row(s) in 0.0240 seconds
+
+hbase(main):066:0> put 'location','1','child:4','state'
+0 row(s) in 0.0310 seconds
+
+hbase(main):067:0> put 'location','1','child:5','state'
+0 row(s) in 0.0230 seconds
+
+hbase(main):068:0> put 'location','1','child:6','state'
+0 row(s) in 0.0410 seconds
+
+hbase(main):069:0> get 'location','5'
+COLUMN                                               CELL                                                                                                                                                   
+ child:7                                             timestamp=1528933888651, value=city                                                                                                                    
+ child:8                                             timestamp=1528933893901, value=city                                                                                                                    
+ name:                                               timestamp=1528933691110, value=shandong                                                                                                                
+ parent:1                                            timestamp=1528933846588, value=nation                                                                                                                  
+4 row(s) in 0.0640 seconds
+
+
+
+_______________________________________________________________________________________________________________--
+
+hbase(main):074:0> create 'userfriends','info','friend'
+0 row(s) in 1.2300 seconds
+
+hbase(main):075:0> put 'userfriends','1','info:name','ruth'
+0 row(s) in 0.1060 seconds
+
+hbase(main):076:0> put 'userfriends','1','info:age','24'
+0 row(s) in 0.0710 seconds
+
+hbase(main):077:0> put 'userfriends','1','info:sex','male'
+0 row(s) in 0.0730 seconds
+
+hbase(main):078:0> put 'userfriends','1','friend:2','work'
+0 row(s) in 0.0220 seconds
+
+hbase(main):079:0> get 'userfriends','1'
+COLUMN                                               CELL                                                                                                                                                   
+ friend:2                                            timestamp=1528934797419, value=work                                                                                                                    
+ info:age                                            timestamp=1528934718222, value=24                                                                                                                      
+ info:name                                           timestamp=1528934706383, value=ruth                                                                                                                    
+ info:sex                                            timestamp=1528934732780, value=male                                                                                                                    
+4 row(s) in 0.0490 seconds
+
+_______________________________________________________________________________________________________________
+
+hbase(main):080:0> create 'student','info','course'
+0 row(s) in 1.1670 seconds
+
+hbase(main):081:0> put 'student','1','info:name','ruth'
+0 row(s) in 0.0480 seconds
+
+hbase(main):082:0> put 'student','1','info:sex','male'
+0 row(s) in 0.0270 seconds
+
+hbase(main):083:0> put 'student','1','info:age','24'
+0 row(s) in 0.0290 seconds
+
+hbase(main):084:0> put 'student','1','course:1','thesis'
+0 row(s) in 0.0310 seconds
+
+hbase(main):085:0> put 'student','1','course:2','lab'
+0 row(s) in 0.0440 seconds
+
+hbase(main):086:0> get 'student','1'
+COLUMN                                               CELL                                                                                                                                                   
+ course:1                                            timestamp=1528936245273, value=thesis                                                                                                                  
+ course:2                                            timestamp=1528936259982, value=lab                                                                                                                     
+ info:age                                            timestamp=1528936209120, value=24                                                                                                                      
+ info:name                                           timestamp=1528936187633, value=ruth                                                                                                                    
+ info:sex                                            timestamp=1528936198843, value=male                                                                                                                    
+5 row(s) in 0.0980 seconds
+
+_______________________________________________________________________________________________________________
+
+hbase(main):087:0> create 'course','info','student'
+0 row(s) in 1.2240 seconds
+
+hbase(main):088:0> put 'course','1','info:title','bigdata'
+0 row(s) in 0.1620 seconds
+
+hbase(main):089:0> put 'course','1','info:intro','hbase'
+0 row(s) in 0.0330 seconds
+
+hbase(main):090:0> put 'course','1','info:teacherid','162'
+0 row(s) in 0.0380 seconds
+
+hbase(main):091:0> put 'course','1','student:1','1'
+0 row(s) in 0.0630 seconds
+
+hbase(main):092:0> put 'course','1','student:1','full'
+0 row(s) in 0.0270 seconds
+
+hbase(main):093:0> put 'course','1','student:2','online'
+0 row(s) in 0.0150 seconds
+
+hbase(main):094:0> get 'course','1'
+COLUMN                                               CELL                                                                                                                                                   
+ info:intro                                          timestamp=1528936361390, value=hbase                                                                                                                   
+ info:teacherid                                      timestamp=1528936378609, value=162                                                                                                                     
+ info:title                                          timestamp=1528936350873, value=bigdata                                                                                                                 
+ student:1                                           timestamp=1528936420438, value=full                                                                                                                    
+ student:2                                           timestamp=1528936429123, value=online                                                                                                                  
+5 row(s) in 0.0350 seconds
+
+_______________________________________________________________________________________________________________
+
+hbase(main):095:0> create 'user-action','name','event','time'
+0 row(s) in 1.2340 seconds
+
+hbase(main):096:0> put 'user-action','1','name','rp'
+0 row(s) in 0.0450 seconds
+
+hbase(main):097:0> put 'user-action','1','event','login','time','1'
+
+ERROR: wrong number of arguments (6 for 5)
+Here is some help for this command:
+Put a cell 'value' at specified table/row/column and optionally
+timestamp coordinates.  To put a cell value into table 't1' at
+row 'r1' under column 'c1' marked with the time 'ts1', do:
+
+  hbase> put 't1', 'r1', 'c1', 'value', ts1
+
+
+hbase(main):098:0> put 'user-action','1','event','login'
+0 row(s) in 0.0200 seconds
+
+hbase(main):099:0> put 'user-action','1','time','2018-6-13'
+0 row(s) in 0.0290 seconds
+
+hbase(main):100:0> get 'user-action', '1'
+COLUMN                                               CELL                                                                                                                                                   
+ event:                                              timestamp=1528936950500, value=login                                                                                                                   
+ name:                                               timestamp=1528936921061, value=rp                                                                                                                      
+ time:                                               timestamp=1528937094455, value=2018-6-13                                                                                                               
+3 row(s) in 0.0470 seconds
+
+_______________________________________________________________________________________________________________
+
+hbase(main):101:0> create 'accesslog','http','user'
+0 row(s) in 1.1770 seconds
+
+hbase(main):102:0> put 'accesslog',1,'http:ip','172.16.66.74'
+0 row(s) in 0.0410 seconds
+
+hbase(main):103:0> put 'accesslog',1,'http:domain','org'
+0 row(s) in 0.0360 seconds
+
+hbase(main):104:0> put 'accesslog',1,'http:url','www.ericsson.org'
+0 row(s) in 0.0110 seconds
+
+hbase(main):105:0> put 'accesslog',1,'http:referrer','wiki'
+0 row(s) in 0.0210 seconds
+
+hbase(main):106:0> put 'accesslog',1,'user:browser','chrome'
+0 row(s) in 0.0780 seconds
+
+hbase(main):107:0> put 'accesslog',1,'user:cookie','1234'
+0 row(s) in 0.0140 seconds
+
+hbase(main):108:0> put 'accesslog',1,'user:id','1'
+0 row(s) in 0.0320 seconds
+
+hbase(main):109:0> get 'accesslog', '1'
+COLUMN                                               CELL                                                                                                                                                   
+ http:domain                                         timestamp=1528937438043, value=org                                                                                                                     
+ http:ip                                             timestamp=1528937417907, value=172.16.66.74                                                                                                            
+ http:referrer                                       timestamp=1528937479996, value=wiki                                                                                                                    
+ http:url                                            timestamp=1528937460741, value=www.ericsson.org                                                                                                        
+ user:browser                                        timestamp=1528937514481, value=chrome                                                                                                                  
+ user:cookie                                         timestamp=1528937533372, value=1234                                                                                                                    
+ user:id                                             timestamp=1528937544649, value=1                                                                                                                       
+7 row(s) in 0.0520 seconds
+
+hbase(main):110:0> 
+hbase(main):111:0* 
+
+_______________________________________________________________________________________________________________
+
+hbase(main):114:0* list
+TABLE                                                                                                                                                                                                       
+accesslog                                                                                                                                                                                                   
+course                                                                                                                                                                                                      
+location                                                                                                                                                                                                    
+student                                                                                                                                                                                                     
+user-action                                                                                                                                                                                                 
+userfriends                                                                                                                                                                                                 
+6 row(s) in 0.0570 seconds
+
+hbase(main):115:0> scan userfriends
+NameError: undefined local variable or method `userfriends' for #<Object:0x60325987>
+
+_______________________________________________________________________________________________________________
+
+hbase(main):116:0> scan 'userfriends'
+ROW                                                  COLUMN+CELL                                                                                                                                            
+ 1                                                   column=friend:2, timestamp=1528934797419, value=work                                                                                                   
+ 1                                                   column=info:age, timestamp=1528934718222, value=24                                                                                                     
+ 1                                                   column=info:name, timestamp=1528934706383, value=ruth                                                                                                  
+ 1                                                   column=info:sex, timestamp=1528934732780, value=male                                                                                                   
+1 row(s) in 0.1880 seconds
+
+hbase(main):117:0> scan 'user-action'
+ROW                                                  COLUMN+CELL                                                                                                                                            
+ 1                                                   column=event:, timestamp=1528936950500, value=login                                                                                                    
+ 1                                                   column=name:, timestamp=1528936921061, value=rp                                                                                                        
+ 1                                                   column=time:, timestamp=1528937094455, value=2018-6-13                                                                                                 
+1 row(s) in 0.0290 seconds
+
+_______________________________________________________________________________________________________________
+
+hbase(main):118:0> describe 'user-action'
+DESCRIPTION                                                                                                                         ENABLED                                                                 
+ 'user-action', {NAME => 'event', ENCODE_ON_DISK => 'true', BLOOMFILTER => 'NONE', VERSIONS => '3', IN_MEMORY => 'false', KEEP_DELE true                                                                    
+ TED_CELLS => 'false', DATA_BLOCK_ENCODING => 'NONE', TTL => '2147483647', COMPRESSION => 'NONE', MIN_VERSIONS => '0', BLOCKCACHE =                                                                         
+ > 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}, {NAME => 'name', ENCODE_ON_DISK => 'true', BLOOMFILTER => 'NONE', VERSI                                                                         
+ ONS => '3', IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'false', DATA_BLOCK_ENCODING => 'NONE', TTL => '2147483647', COMPRESSION =                                                                         
+ > 'NONE', MIN_VERSIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}, {NAME => 'time', ENCODE_ON_D                                                                         
+ ISK => 'true', BLOOMFILTER => 'NONE', VERSIONS => '3', IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'false', DATA_BLOCK_ENCODING =>                                                                         
+  'NONE', TTL => '2147483647', COMPRESSION => 'NONE', MIN_VERSIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_                                                                         
+ SCOPE => '0'}                                                                                                                                                                                              
+1 row(s) in 0.0940 seconds
+
+hbase(main):119:0> balancer
+true                                                                                                                                                                                                        
+0 row(s) in 0.0310 seconds
+
+hbase(main):120:0> split 'user-action'
+0 row(s) in 0.3440 seconds
+
+
+_______________________________________________________________________________________________________________
+
+-----------------------
+Disable and drop table
+-----------------------
+
+hbase(main):047:0> list 'location'
+TABLE                                                                                                                                                                                                       
+location                                                                                                                                                                                                    
+1 row(s) in 0.1360 seconds
+
+hbase(main):048:0> drop 'location'
+
+ERROR: Table location is enabled. Disable it first.'
+
+Here is some help for this command:
+Drop the named table. Table must first be disabled: e.g. "hbase> drop 't1'"
+
+
+hbase(main):049:0> disable 'location'
+0 row(s) in 2.1320 seconds
+
+hbase(main):050:0> drop 'location'
+0 row(s) in 1.2880 seconds
+
+hbase(main):051:0> list 'location;
+hbase(main):052:0' '
+TABLE                                                                                                                                                                                                       
+0 row(s) in 0.0290 seconds
+
