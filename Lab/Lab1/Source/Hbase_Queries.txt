@@ -1,0 +1,193 @@
+--------------
+create table
+--------------
+
+hbase(main):001:0> create 'netflix_users','user_details','user_activity'
+0 row(s) in 3.4560 seconds
+
+---------------------
+insert data
+---------------------
+
+hbase(main):002:0> put 'netflix_users',1,'user_details:user_name','ruth'
+0 row(s) in 0.4270 seconds
+
+hbase(main):003:0> put 'netflix_users',1,'user_details:user_type','trial'
+0 row(s) in 0.0460 seconds
+
+hbase(main):004:0> put 'netflix_users',1,'user_details:country','india'
+0 row(s) in 0.0120 seconds
+
+hbase(main):005:0> put 'netflix_users',1,'user_details:genre','sci-fi'
+0 row(s) in 0.0300 seconds
+
+-----------------------
+retrieve row 1
+----------------------
+
+hbase(main):006:0> get 'netflix_users',1
+COLUMN                CELL                                                      
+ user_details:country timestamp=1529284949220, value=india                      
+ user_details:genre   timestamp=1529284968441, value=sci-fi                     
+ user_details:user_na timestamp=1529284863167, value=ruth                       
+ me                                                                             
+ user_details:user_ty timestamp=1529284878198, value=trial                      
+ pe                                                                             
+4 row(s) in 0.1720 seconds
+
+--------------------------------------------------
+insert additional data
+--------------------------------------------------
+
+hbase(main):007:0> put 'netflix_users',1,'user_activity:joined_date','2017-07-20'
+0 row(s) in 0.0100 seconds
+
+hbase(main):008:0> put 'netflix_users',1,'user_activity:last_activity','2018-06-16'
+0 row(s) in 0.0560 seconds
+
+hbase(main):009:0> put 'netflix_users',1,'user_activity:last_watched','marvel infinity wars'
+0 row(s) in 0.0550 seconds
+
+-----------------------
+retrieve row 1 with all columns
+-----------------------
+
+hbase(main):010:0> get 'netflix_users',1
+COLUMN                                               CELL                                                                                                                                                   
+ user_activity:joined_date                           timestamp=1529285225368, value=2017-07-20                                                                                                              
+ user_activity:last_activity                         timestamp=1529285282283, value=2018-06-16                                                                                                              
+ user_activity:last_watched                          timestamp=1529285419798, value=marvel infinity wars                                                                                                    
+ user_details:country                                timestamp=1529284949220, value=india                                                                                                                   
+ user_details:genre                                  timestamp=1529284968441, value=sci-fi                                                                                                                  
+ user_details:user_name                              timestamp=1529284863167, value=ruth                                                                                                                    
+ user_details:user_type                              timestamp=1529284878198, value=trial                                                                                                                   
+7 row(s) in 0.1050 seconds
+
+------------------------
+insert row 2
+------------------------
+
+hbase(main):011:0> put 'netflix_users',2,'user_details:user_name','punya'
+0 row(s) in 0.0260 seconds
+
+hbase(main):012:0> put 'netflix_users',2,'user_details:user_type','trial'
+0 row(s) in 0.0210 seconds
+
+hbase(main):013:0> put 'netflix_users',2,'user_details:country','india'
+0 row(s) in 0.0370 seconds
+
+hbase(main):014:0> put 'netflix_users',2,'user_details:genre','thriller'
+0 row(s) in 0.0310 seconds
+
+hbase(main):015:0> put 'netflix_users',2,'user_activity:joined_date','2018-06-17'
+0 row(s) in 0.0590 seconds
+
+hbase(main):016:0> put 'netflix_users',2,'user_activity:last_activity','2018-05-15'
+0 row(s) in 0.0310 seconds
+
+hbase(main):017:0> put 'netflix_users',2,'user_activity:last_watched','rampage'
+0 row(s) in 0.0180 seconds
+
+hbase(main):018:0> put 'netflix_users',2,'user_activity:trial_end_date','2018-07-15'
+0 row(s) in 0.0220 seconds
+
+--------------------
+Retrieve row 2
+--------------------
+
+hbase(main):019:0> get 'netflix_users',2
+COLUMN                                               CELL                                                                                                                                                   
+ user_activity:joined_date                           timestamp=1529285796755, value=2018-06-17                                                                                                              
+ user_activity:last_activity                         timestamp=1529285852987, value=2018-05-15                                                                                                              
+ user_activity:last_watched                          timestamp=1529285958765, value=rampage                                                                                                                 
+ user_activity:trial_end_date                        timestamp=1529286007198, value=2018-07-15                                                                                                              
+ user_details:country                                timestamp=1529285656798, value=india                                                                                                                   
+ user_details:genre                                  timestamp=1529285697334, value=thriller                                                                                                                
+ user_details:user_name                              timestamp=1529285578228, value=punya                                                                                                                   
+ user_details:user_type                              timestamp=1529285604073, value=trial                                                                                                                   
+8 row(s) in 0.1540 seconds
+
+--------------------------
+scan Table
+-------------------------
+
+hbase(main):020:0> scan 'netflix_users'
+ROW                                                  COLUMN+CELL                                                                                                                                            
+ 1                                                   column=user_activity:joined_date, timestamp=1529285225368, value=2017-07-20                                                                            
+ 1                                                   column=user_activity:last_activity, timestamp=1529285282283, value=2018-06-16                                                                          
+ 1                                                   column=user_activity:last_watched, timestamp=1529285419798, value=marvel infinity wars                                                                 
+ 1                                                   column=user_details:country, timestamp=1529284949220, value=india                                                                                      
+ 1                                                   column=user_details:genre, timestamp=1529284968441, value=sci-fi                                                                                       
+ 1                                                   column=user_details:user_name, timestamp=1529284863167, value=ruth                                                                                     
+ 1                                                   column=user_details:user_type, timestamp=1529284878198, value=trial                                                                                    
+ 2                                                   column=user_activity:joined_date, timestamp=1529285796755, value=2018-06-17                                                                            
+ 2                                                   column=user_activity:last_activity, timestamp=1529285852987, value=2018-05-15                                                                          
+ 2                                                   column=user_activity:last_watched, timestamp=1529285958765, value=rampage                                                                              
+ 2                                                   column=user_activity:trial_end_date, timestamp=1529286007198, value=2018-07-15                                                                         
+ 2                                                   column=user_details:country, timestamp=1529285656798, value=india                                                                                      
+ 2                                                   column=user_details:genre, timestamp=1529285697334, value=thriller                                                                                     
+ 2                                                   column=user_details:user_name, timestamp=1529285578228, value=punya                                                                                    
+ 2                                                   column=user_details:user_type, timestamp=1529285604073, value=trial                                                                                    
+2 row(s) in 0.3780 seconds
+
+--------------------------------
+get user_details
+-------------------------------
+
+hbase(main):021:0> get 'netflix_users',1,'user_details'
+COLUMN                                               CELL                                                                                                                                                   
+ user_details:country                                timestamp=1529284949220, value=india                                                                                                                   
+ user_details:genre                                  timestamp=1529284968441, value=sci-fi                                                                                                                  
+ user_details:user_name                              timestamp=1529284863167, value=ruth                                                                                                                    
+ user_details:user_type                              timestamp=1529284878198, value=trial                                                                                                                   
+4 row(s) in 0.0370 seconds
+
+-------------------------------------
+query 1 : retrieve country of user 1 
+-------------------------------------
+
+hbase(main):022:0> get 'netflix_users',1,'user_details:country'
+COLUMN                                               CELL                                                                                                                                                   
+ user_details:country                                timestamp=1529284949220, value=india                                                                                                                   
+1 row(s) in 0.0650 seconds
+
+
+-----------------------------------
+query 2 : retrieve user_type=trial
+-----------------------------------
+
+hbase(main):024:0> scan 'netflix_users', {FILTER => "SingleColumnValueFilter('user_details','user_type',=,'binary:trial')"}
+ROW                                                  COLUMN+CELL                                                                                                                                            
+ 1                                                   column=user_activity:joined_date, timestamp=1529285225368, value=2017-07-20                                                                            
+ 1                                                   column=user_activity:last_activity, timestamp=1529285282283, value=2018-06-16                                                                          
+ 1                                                   column=user_activity:last_watched, timestamp=1529285419798, value=marvel infinity wars                                                                 
+ 1                                                   column=user_details:country, timestamp=1529284949220, value=india                                                                                      
+ 1                                                   column=user_details:genre, timestamp=1529284968441, value=sci-fi                                                                                       
+ 1                                                   column=user_details:user_name, timestamp=1529284863167, value=ruth                                                                                     
+ 1                                                   column=user_details:user_type, timestamp=1529284878198, value=trial                                                                                    
+ 2                                                   column=user_activity:joined_date, timestamp=1529285796755, value=2018-06-17                                                                            
+ 2                                                   column=user_activity:last_activity, timestamp=1529285852987, value=2018-05-15                                                                          
+ 2                                                   column=user_activity:last_watched, timestamp=1529285958765, value=rampage                                                                              
+ 2                                                   column=user_activity:trial_end_date, timestamp=1529286007198, value=2018-07-15                                                                         
+ 2                                                   column=user_details:country, timestamp=1529285656798, value=india                                                                                      
+ 2                                                   column=user_details:genre, timestamp=1529285697334, value=thriller                                                                                     
+ 2                                                   column=user_details:user_name, timestamp=1529285578228, value=punya                                                                                    
+ 2                                                   column=user_details:user_type, timestamp=1529285604073, value=trial                                                                                    
+2 row(s) in 0.4780 seconds
+
+----------------------------------------------------
+query 2 : retrieve users whose last_watched=rampage
+----------------------------------------------------
+
+hbase(main):025:0> scan 'netflix_users', {FILTER => "SingleColumnValueFilter('user_activity','last_watched',=,'binary:rampage')"}
+ROW                                                  COLUMN+CELL                                                                                                                                            
+ 2                                                   column=user_activity:joined_date, timestamp=1529285796755, value=2018-06-17                                                                            
+ 2                                                   column=user_activity:last_activity, timestamp=1529285852987, value=2018-05-15                                                                          
+ 2                                                   column=user_activity:last_watched, timestamp=1529285958765, value=rampage                                                                              
+ 2                                                   column=user_activity:trial_end_date, timestamp=1529286007198, value=2018-07-15                                                                         
+ 2                                                   column=user_details:country, timestamp=1529285656798, value=india                                                                                      
+ 2                                                   column=user_details:genre, timestamp=1529285697334, value=thriller                                                                                     
+ 2                                                   column=user_details:user_name, timestamp=1529285578228, value=punya                                                                                    
+ 2                                                   column=user_details:user_type, timestamp=1529285604073, value=trial                                                                                    
+1 row(s) in 0.1560 seconds
+
