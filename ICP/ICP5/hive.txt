@@ -1,0 +1,1226 @@
+hive> create table petrol (
+    > distributer_id
+    > STRING,distributer_name
+    > STRING,amt_IN
+    > STRING,amy_OUT
+    > STRING,vol_IN
+    > INT,vol_OUT
+    > INT,year
+    > INT)  row  format 
+    > delimited fields terminated by ',' stored as textfile;
+OK
+Time taken: 0.407 seconds
+hive> load data local inpath '/home/ruthvic/Downloads/petrol.txt' into table petrol;
+Loading data to table default.petrol
+OK
+Time taken: 0.864 seconds
+hive> SELECT 
+    > distributer_name,SUM
+    > (
+    > vol_OUT
+    > )  FROM  petrol GROUP  BY 
+    > distributer_name;
+WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Query ID = hduser_20180618185006_4a57615d-738b-4f84-ab7c-68a07282b9b5
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1529356496355_0005, Tracking URL = http://localhost:8088/proxy/application_1529356496355_0005/
+Kill Command = /usr/local/hadoop/bin/hadoop job  -kill job_1529356496355_0005
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2018-06-18 18:50:20,643 Stage-1 map = 0%,  reduce = 0%
+2018-06-18 18:50:30,506 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.29 sec
+2018-06-18 18:50:39,353 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.17 sec
+MapReduce Total cumulative CPU time: 3 seconds 170 msec
+Ended Job = job_1529356496355_0005
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.17 sec   HDFS Read: 28209 HDFS Write: 223 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 170 msec
+OK
+Bharat	83662
+Distributer name	NULL
+hindustan	71767
+reliance	76558
+shell	69266
+Time taken: 34.84 seconds, Fetched: 5 row(s)
+hive> SELECT 
+    > distributer_id,vol_OUT
+    > FROM petrol order by 
+    > vol_OUT
+    > desc
+    > limit 10;
+WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Query ID = hduser_20180618185104_77ebf007-b135-4d4b-8880-6fe1f03053ad
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1529356496355_0006, Tracking URL = http://localhost:8088/proxy/application_1529356496355_0006/
+Kill Command = /usr/local/hadoop/bin/hadoop job  -kill job_1529356496355_0006
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2018-06-18 18:51:18,683 Stage-1 map = 0%,  reduce = 0%
+2018-06-18 18:51:28,567 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.28 sec
+2018-06-18 18:51:38,359 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.22 sec
+MapReduce Total cumulative CPU time: 3 seconds 220 msec
+Ended Job = job_1529356496355_0006
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.22 sec   HDFS Read: 26814 HDFS Write: 327 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 220 msec
+OK
+T1A 9W4	899
+S8W 0P4	899
+V8U 2T6	898
+O9P 9S3	897
+O8A 6Z5	897
+F6W 6H3	896
+N5Q 8E5	895
+E6O 9P1	895
+M6S 1P4	895
+J4M 4G3	895
+Time taken: 34.744 seconds, Fetched: 10 row(s)
+hive> SELECT 
+    > distributer_id,vol_OUT
+    > FROM petrol order by 
+    > vol_OUT
+    > limit 
+    > 10
+    > ;
+WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Query ID = hduser_20180618185202_173f21b3-05f7-4f50-854d-06200ffcefe7
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1529356496355_0007, Tracking URL = http://localhost:8088/proxy/application_1529356496355_0007/
+Kill Command = /usr/local/hadoop/bin/hadoop job  -kill job_1529356496355_0007
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2018-06-18 18:52:18,510 Stage-1 map = 0%,  reduce = 0%
+2018-06-18 18:52:28,632 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.67 sec
+2018-06-18 18:52:39,701 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.7 sec
+MapReduce Total cumulative CPU time: 3 seconds 700 msec
+Ended Job = job_1529356496355_0007
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.7 sec   HDFS Read: 26800 HDFS Write: 330 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 700 msec
+OK
+District.ID	NULL
+F4D 6K2	602
+H7M 4M4	603
+G9F 6U7	607
+R3W 2E3	608
+O5D 2R6	610
+H4P 6A9	610
+V0Z 0F6	612
+O0D 0L1	612
+W0M 8R7	612
+Time taken: 38.225 seconds, Fetched: 10 row(s)
+hive> select distributer,year from petrol where (vol_IN-vol_OUT<500);
+FAILED: SemanticException [Error 10004]: Line 1:7 Invalid table alias or column reference 'distributer': (possible column names are: distributer_id, distributer_name, amt_in, amy_out, vol_in, vol_out, year)
+hive> select distributer,year from petrol where (vol_IN-vol_OU)T<500;
+FAILED: ParseException line 1:57 missing EOF at 'T' near ')'
+hive> select distributer_name,year from petrol where (vol_IN-vol_OUT)<500;
+OK
+shell	1624
+reliance	1625
+hindustan	1626
+Bharat	1627
+Bharat	1628
+shell	1629
+shell	1630
+reliance	1631
+Bharat	1632
+hindustan	1633
+Bharat	1634
+Bharat	1635
+reliance	1636
+Bharat	1637
+hindustan	1638
+Bharat	1639
+shell	1640
+hindustan	1641
+hindustan	1642
+Bharat	1643
+reliance	1644
+Bharat	1645
+hindustan	1646
+shell	1647
+Bharat	1648
+shell	1649
+hindustan	1650
+hindustan	1651
+shell	1652
+shell	1653
+hindustan	1654
+reliance	1655
+Bharat	1656
+hindustan	1657
+shell	1658
+hindustan	1659
+Bharat	1660
+hindustan	1661
+hindustan	1662
+shell	1663
+reliance	1664
+Bharat	1665
+shell	1666
+shell	1667
+reliance	1668
+Bharat	1669
+shell	1670
+shell	1671
+hindustan	1672
+hindustan	1673
+reliance	1674
+hindustan	1675
+hindustan	1676
+hindustan	1677
+shell	1678
+shell	1679
+Bharat	1680
+shell	1681
+reliance	1682
+reliance	1683
+hindustan	1684
+hindustan	1685
+hindustan	1686
+hindustan	1687
+reliance	1688
+reliance	1689
+Bharat	1690
+shell	1691
+shell	1692
+shell	1693
+shell	1694
+reliance	1695
+hindustan	1696
+shell	1697
+Bharat	1698
+shell	1699
+reliance	1700
+Bharat	1701
+Bharat	1702
+reliance	1703
+shell	1704
+Bharat	1705
+Bharat	1706
+hindustan	1707
+reliance	1708
+shell	1709
+reliance	1710
+shell	1711
+Bharat	1712
+shell	1713
+hindustan	1714
+Bharat	1715
+hindustan	1716
+hindustan	1717
+reliance	1718
+shell	1719
+reliance	1720
+shell	1721
+hindustan	1722
+Bharat	1723
+Bharat	1724
+hindustan	1725
+shell	1726
+Bharat	1727
+Bharat	1728
+shell	1729
+shell	1730
+shell	1731
+Bharat	1732
+shell	1733
+shell	1734
+Bharat	1735
+reliance	1736
+Bharat	1737
+reliance	1738
+shell	1739
+shell	1740
+reliance	1741
+Bharat	1742
+Bharat	1743
+shell	1744
+hindustan	1745
+shell	1746
+shell	1747
+shell	1748
+shell	1749
+shell	1750
+hindustan	1751
+shell	1752
+reliance	1753
+shell	1754
+Bharat	1755
+reliance	1756
+hindustan	1757
+Bharat	1758
+reliance	1759
+hindustan	1760
+hindustan	1761
+Bharat	1762
+Bharat	1763
+hindustan	1764
+Bharat	1765
+reliance	1766
+shell	1767
+reliance	1768
+shell	1769
+Bharat	1770
+shell	1771
+reliance	1772
+Bharat	1773
+hindustan	1774
+Bharat	1775
+hindustan	1776
+Bharat	1777
+Bharat	1778
+reliance	1779
+Bharat	1780
+hindustan	1781
+reliance	1782
+Bharat	1783
+hindustan	1784
+shell	1785
+reliance	1786
+Bharat	1787
+Bharat	1788
+Bharat	1789
+shell	1790
+Bharat	1791
+reliance	1792
+reliance	1793
+reliance	1794
+shell	1795
+Bharat	1796
+shell	1797
+hindustan	1798
+Bharat	1799
+Bharat	1800
+hindustan	1801
+Bharat	1802
+hindustan	1803
+shell	1804
+Bharat	1805
+hindustan	1806
+hindustan	1807
+shell	1808
+reliance	1809
+hindustan	1810
+reliance	1811
+hindustan	1812
+reliance	1813
+shell	1814
+hindustan	1815
+shell	1816
+reliance	1817
+reliance	1818
+shell	1819
+Bharat	1820
+Bharat	1821
+Bharat	1822
+Bharat	1823
+hindustan	1824
+reliance	1825
+shell	1826
+reliance	1827
+hindustan	1828
+hindustan	1829
+hindustan	1830
+hindustan	1831
+reliance	1832
+reliance	1833
+hindustan	1834
+reliance	1835
+reliance	1836
+reliance	1837
+reliance	1838
+hindustan	1839
+reliance	1840
+reliance	1841
+Bharat	1842
+shell	1843
+hindustan	1844
+Bharat	1845
+hindustan	1846
+hindustan	1847
+reliance	1848
+reliance	1849
+hindustan	1850
+Bharat	1851
+shell	1852
+Bharat	1853
+hindustan	1854
+reliance	1855
+Bharat	1856
+shell	1857
+hindustan	1858
+shell	1859
+Bharat	1860
+Bharat	1861
+Bharat	1862
+Bharat	1863
+reliance	1864
+Bharat	1865
+Bharat	1866
+reliance	1867
+reliance	1868
+shell	1869
+reliance	1870
+hindustan	1871
+hindustan	1872
+hindustan	1873
+shell	1874
+shell	1875
+reliance	1876
+reliance	1877
+reliance	1878
+shell	1879
+Bharat	1880
+reliance	1881
+reliance	1882
+reliance	1883
+reliance	1884
+hindustan	1885
+Bharat	1886
+reliance	1887
+Bharat	1888
+reliance	1889
+reliance	1890
+shell	1891
+Bharat	1892
+Bharat	1893
+shell	1894
+Bharat	1895
+reliance	1896
+Bharat	1897
+Bharat	1898
+reliance	1899
+hindustan	1900
+hindustan	1901
+hindustan	1902
+Bharat	1903
+Bharat	1904
+Bharat	1905
+reliance	1906
+reliance	1907
+reliance	1908
+reliance	1909
+hindustan	1910
+reliance	1911
+shell	1912
+reliance	1913
+hindustan	1914
+hindustan	1915
+shell	1916
+Bharat	1917
+Bharat	1918
+Bharat	1919
+Bharat	1920
+hindustan	1921
+Bharat	1922
+shell	1923
+hindustan	1924
+reliance	1925
+reliance	1926
+reliance	1927
+hindustan	1928
+Bharat	1929
+shell	1930
+reliance	1931
+shell	1932
+hindustan	1933
+shell	1934
+shell	1935
+reliance	1936
+shell	1937
+reliance	1938
+Bharat	1939
+Bharat	1940
+Bharat	1941
+Bharat	1942
+reliance	1943
+Bharat	1944
+reliance	1945
+reliance	1946
+reliance	1947
+hindustan	1948
+reliance	1949
+hindustan	1950
+reliance	1951
+Bharat	1952
+reliance	1953
+shell	1954
+hindustan	1955
+reliance	1956
+shell	1957
+hindustan	1958
+Bharat	1959
+Bharat	1960
+shell	1961
+hindustan	1962
+shell	1963
+shell	1964
+Bharat	1965
+hindustan	1966
+reliance	1967
+hindustan	1968
+reliance	1969
+shell	1970
+reliance	1971
+hindustan	1972
+shell	1973
+Bharat	1974
+shell	1975
+hindustan	1976
+reliance	1977
+hindustan	1978
+Bharat	1979
+shell	1980
+hindustan	1981
+Bharat	1982
+Bharat	1983
+hindustan	1984
+Bharat	1985
+shell	1986
+hindustan	1987
+reliance	1988
+reliance	1989
+Bharat	1990
+hindustan	1991
+shell	1992
+hindustan	1993
+Bharat	1994
+Bharat	1995
+reliance	1996
+Bharat	1997
+hindustan	1998
+Bharat	1999
+reliance	2000
+reliance	2001
+Bharat	2002
+reliance	2003
+shell	2004
+Bharat	2005
+shell	2006
+reliance	2007
+Bharat	2008
+hindustan	2009
+Bharat	2010
+Bharat	2011
+reliance	2012
+hindustan	2013
+hindustan	2014
+reliance	2015
+shell	2016
+shell	2017
+reliance	2018
+shell	2019
+hindustan	2020
+reliance	2021
+shell	2022
+Bharat	2023
+Time taken: 0.426 seconds, Fetched: 400 row(s)
+hive> 
+    > 
+    > 
+    > reate table 
+    > olympic
+    > (
+    > athelete
+    > STRING,age
+    > INT,country
+    > STRING,year
+    > STRING,closing
+    > STRING,sport
+    > STRING,gold
+    > INT,silver
+    > INT,bronze
+    > INT,total
+    > INT) row format delimited 
+    > fields terminated by '\t' stored as textfile;
+NoViableAltException(26@[])
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1140)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:204)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:404)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:329)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1158)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1253)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1084)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1072)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:232)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:183)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:399)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:776)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:714)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:641)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:234)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:148)
+FAILED: ParseException line 1:0 cannot recognize input near 'reate' 'table' 'olympic'
+hive> create table olympic
+    >     > (
+    >     > athelete
+    >     > STRING,age
+    >     > INT,country
+    >     > STRING,year
+    >     > STRING,closing
+    >     > STRING,sport
+    >     > STRING,gold
+    >     > INT,silver
+    >     > INT,bronze
+    >     > INT,total
+    >     > INT) row format delimited 
+    >     > fields terminated by '\t' stored as textfile;
+NoViableAltException(23@[202:1: tableName : (db= identifier DOT tab= identifier -> ^( TOK_TABNAME $db $tab) |tab= identifier -> ^( TOK_TABNAME $tab) );])
+	at org.antlr.runtime.DFA.noViableAlt(DFA.java:158)
+	at org.antlr.runtime.DFA.predict(DFA.java:116)
+	at org.apache.hadoop.hive.ql.parse.HiveParser_FromClauseParser.tableName(HiveParser_FromClauseParser.java:4992)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.tableName(HiveParser.java:51882)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.createTableStatement(HiveParser.java:5074)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.ddlStatement(HiveParser.java:2763)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.execStatement(HiveParser.java:1756)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1178)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:204)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:166)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:404)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:329)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1158)
+	at org.apache.hadoop.hive.ql.Driver.runInternal(Driver.java:1253)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1084)
+	at org.apache.hadoop.hive.ql.Driver.run(Driver.java:1072)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:232)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:183)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:399)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:776)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:714)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:641)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:234)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:148)
+FAILED: ParseException line 2:4 cannot recognize input near 'olympic' '>' '(' in table name
+hive> create table 
+    > olympic
+    > (
+    > athelete
+    > STRING,age
+    > INT,country
+    > STRING,year
+    > STRING,closing
+    > STRING,sport
+    > STRING,gold
+    > INT,silver
+    > INT,bronze
+    > INT,total
+    > INT) row format delimited 
+    > fields terminated by '\t' stored as textfile;
+OK
+Time taken: 0.244 seconds
+hive> load data local inpath '/home/ruthvic/Downloads/olympic_data.csv' into table olympic;
+Loading data to table default.olympic
+OK
+Time taken: 0.519 seconds
+hive> select 
+    > country,SUM
+    > (total) from 
+    > olympic
+    > where sport = "Swimming" group by country;
+WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Query ID = hduser_20180618185823_eea59abd-5780-4505-a563-d4c09340c5ad
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1529356496355_0008, Tracking URL = http://localhost:8088/proxy/application_1529356496355_0008/
+Kill Command = /usr/local/hadoop/bin/hadoop job  -kill job_1529356496355_0008
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2018-06-18 18:58:41,413 Stage-1 map = 0%,  reduce = 0%
+2018-06-18 18:58:56,489 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.55 sec
+2018-06-18 18:59:07,541 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 4.68 sec
+MapReduce Total cumulative CPU time: 4 seconds 680 msec
+Ended Job = job_1529356496355_0008
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 4.68 sec   HDFS Read: 528667 HDFS Write: 881 SUCCESS
+Total MapReduce CPU Time Spent: 4 seconds 680 msec
+OK
+Argentina	1
+Australia	163
+Austria	3
+Belarus	2
+Brazil	8
+Canada	5
+China	35
+Costa Rica	2
+Croatia	1
+Denmark	1
+France	39
+Germany	32
+Great Britain	11
+Hungary	9
+Italy	16
+Japan	43
+Lithuania	1
+Netherlands	46
+Norway	2
+Poland	3
+Romania	6
+Russia	20
+Serbia	1
+Slovakia	2
+Slovenia	1
+South Africa	11
+South Korea	4
+Spain	3
+Sweden	9
+Trinidad and Tobago	1
+Tunisia	3
+Ukraine	7
+United States	267
+Zimbabwe	7
+Time taken: 45.92 seconds, Fetched: 34 row(s)
+hive> select 
+    > year,SUM
+    > (total) from 
+    > olympic
+    > where country ="India" group by year;
+WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Query ID = hduser_20180618185929_727ca369-e9c0-4ec5-b62f-21b1f7d5c6db
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1529356496355_0009, Tracking URL = http://localhost:8088/proxy/application_1529356496355_0009/
+Kill Command = /usr/local/hadoop/bin/hadoop job  -kill job_1529356496355_0009
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2018-06-18 18:59:42,907 Stage-1 map = 0%,  reduce = 0%
+2018-06-18 18:59:59,653 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.5 sec
+2018-06-18 19:00:13,243 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 4.83 sec
+MapReduce Total cumulative CPU time: 4 seconds 830 msec
+Ended Job = job_1529356496355_0009
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 4.83 sec   HDFS Read: 528646 HDFS Write: 163 SUCCESS
+Total MapReduce CPU Time Spent: 4 seconds 830 msec
+OK
+2000	1
+2004	1
+2008	3
+2012	6
+Time taken: 45.757 seconds, Fetched: 4 row(s)
+hive> select 
+    > country,SUM
+    > (total) from 
+    > olympic
+    > GROUP BY country;
+WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Query ID = hduser_20180618190050_8a64f5e3-f20a-465b-accf-709c1c969385
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1529356496355_0010, Tracking URL = http://localhost:8088/proxy/application_1529356496355_0010/
+Kill Command = /usr/local/hadoop/bin/hadoop job  -kill job_1529356496355_0010
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2018-06-18 19:01:15,956 Stage-1 map = 0%,  reduce = 0%
+2018-06-18 19:01:28,277 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.38 sec
+2018-06-18 19:01:42,910 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.67 sec
+MapReduce Total cumulative CPU time: 3 seconds 670 msec
+Ended Job = job_1529356496355_0010
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.67 sec   HDFS Read: 527847 HDFS Write: 2742 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 670 msec
+OK
+Afghanistan	2
+Algeria	8
+Argentina	141
+Armenia	10
+Australia	609
+Austria	91
+Azerbaijan	25
+Bahamas	24
+Bahrain	1
+Barbados	1
+Belarus	97
+Belgium	18
+Botswana	1
+Brazil	221
+Bulgaria	41
+Cameroon	20
+Canada	370
+Chile	22
+China	530
+Chinese Taipei	20
+Colombia	13
+Costa Rica	2
+Croatia	81
+Cuba	188
+Cyprus	1
+Czech Republic	81
+Denmark	89
+Dominican Republic	5
+Ecuador	1
+Egypt	8
+Eritrea	1
+Estonia	18
+Ethiopia	29
+Finland	118
+France	318
+Gabon	1
+Georgia	23
+Germany	629
+Great Britain	322
+Greece	59
+Grenada	1
+Guatemala	1
+Hong Kong	3
+Hungary	145
+Iceland	15
+India	11
+Indonesia	22
+Iran	24
+Ireland	9
+Israel	4
+Italy	331
+Jamaica	80
+Japan	282
+Kazakhstan	42
+Kenya	39
+Kuwait	2
+Kyrgyzstan	3
+Latvia	17
+Lithuania	30
+Macedonia	1
+Malaysia	3
+Mauritius	1
+Mexico	38
+Moldova	5
+Mongolia	10
+Montenegro	14
+Morocco	11
+Mozambique	1
+Netherlands	318
+New Zealand	52
+Nigeria	39
+North Korea	21
+Norway	192
+Panama	1
+Paraguay	17
+Poland	80
+Portugal	9
+Puerto Rico	2
+Qatar	3
+Romania	123
+Russia	768
+Saudi Arabia	6
+Serbia	31
+Serbia and Montenegro	38
+Singapore	7
+Slovakia	35
+Slovenia	25
+South Africa	25
+South Korea	308
+Spain	205
+Sri Lanka	1
+Sudan	1
+Sweden	181
+Switzerland	93
+Syria	1
+Tajikistan	3
+Thailand	18
+Togo	1
+Trinidad and Tobago	19
+Tunisia	4
+Turkey	28
+Uganda	1
+Ukraine	143
+United Arab Emirates	1
+United States	1312
+Uruguay	1
+Uzbekistan	19
+Venezuela	4
+Vietnam	2
+Zimbabwe	7
+Time taken: 53.751 seconds, Fetched: 110 row(s)
+hive> select 
+    > country,SUM
+    > (gold) from 
+    > olympic
+    > GROUP BY country;
+WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Query ID = hduser_20180618190204_e3601c2d-b9b0-4e71-889e-7f3e8b428d23
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1529356496355_0011, Tracking URL = http://localhost:8088/proxy/application_1529356496355_0011/
+Kill Command = /usr/local/hadoop/bin/hadoop job  -kill job_1529356496355_0011
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2018-06-18 19:02:22,743 Stage-1 map = 0%,  reduce = 0%
+2018-06-18 19:02:35,287 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.94 sec
+2018-06-18 19:02:48,660 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.68 sec
+MapReduce Total cumulative CPU time: 3 seconds 680 msec
+Ended Job = job_1529356496355_0011
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.68 sec   HDFS Read: 527842 HDFS Write: 2703 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 680 msec
+OK
+Afghanistan	0
+Algeria	2
+Argentina	49
+Armenia	0
+Australia	163
+Austria	36
+Azerbaijan	6
+Bahamas	11
+Bahrain	0
+Barbados	0
+Belarus	17
+Belgium	2
+Botswana	0
+Brazil	46
+Bulgaria	8
+Cameroon	20
+Canada	168
+Chile	3
+China	234
+Chinese Taipei	2
+Colombia	2
+Costa Rica	0
+Croatia	35
+Cuba	57
+Cyprus	0
+Czech Republic	14
+Denmark	46
+Dominican Republic	3
+Ecuador	0
+Egypt	1
+Eritrea	0
+Estonia	6
+Ethiopia	13
+Finland	11
+France	108
+Gabon	0
+Georgia	6
+Germany	223
+Great Britain	124
+Greece	12
+Grenada	1
+Guatemala	0
+Hong Kong	0
+Hungary	77
+Iceland	0
+India	1
+Indonesia	5
+Iran	10
+Ireland	1
+Israel	1
+Italy	86
+Jamaica	24
+Japan	57
+Kazakhstan	13
+Kenya	11
+Kuwait	0
+Kyrgyzstan	0
+Latvia	3
+Lithuania	5
+Macedonia	0
+Malaysia	0
+Mauritius	0
+Mexico	19
+Moldova	0
+Mongolia	2
+Montenegro	0
+Morocco	2
+Mozambique	1
+Netherlands	101
+New Zealand	18
+Nigeria	6
+North Korea	6
+Norway	97
+Panama	1
+Paraguay	0
+Poland	20
+Portugal	1
+Puerto Rico	0
+Qatar	0
+Romania	57
+Russia	234
+Saudi Arabia	0
+Serbia	1
+Serbia and Montenegro	11
+Singapore	0
+Slovakia	10
+Slovenia	5
+South Africa	10
+South Korea	110
+Spain	19
+Sri Lanka	0
+Sudan	0
+Sweden	57
+Switzerland	21
+Syria	0
+Tajikistan	0
+Thailand	6
+Togo	0
+Trinidad and Tobago	1
+Tunisia	2
+Turkey	9
+Uganda	1
+Ukraine	31
+United Arab Emirates	1
+United States	552
+Uruguay	0
+Uzbekistan	5
+Venezuela	1
+Vietnam	0
+Zimbabwe	2
+Time taken: 44.935 seconds, Fetched: 110 row(s)
+hive> select country,year from olympic where sport="Shooting" order by year;
+WARNING: Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Query ID = hduser_20180618190421_efc6c520-93df-4a12-b44a-99031e06b536
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1529356496355_0012, Tracking URL = http://localhost:8088/proxy/application_1529356496355_0012/
+Kill Command = /usr/local/hadoop/bin/hadoop job  -kill job_1529356496355_0012
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2018-06-18 19:04:35,685 Stage-1 map = 0%,  reduce = 0%
+2018-06-18 19:04:45,801 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.92 sec
+2018-06-18 19:04:56,626 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.86 sec
+MapReduce Total cumulative CPU time: 3 seconds 860 msec
+Ended Job = job_1529356496355_0012
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.86 sec   HDFS Read: 527106 HDFS Write: 4788 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 860 msec
+OK
+United States	2000
+France	2000
+Italy	2000
+Great Britain	2000
+China	2000
+United States	2000
+Moldova	2000
+Belarus	2000
+Ukraine	2000
+Azerbaijan	2000
+Poland	2000
+Belarus	2000
+Australia	2000
+Czech Republic	2000
+Bulgaria	2000
+Russia	2000
+Hungary	2000
+Finland	2000
+Sweden	2000
+Lithuania	2000
+Bulgaria	2000
+Denmark	2000
+United States	2000
+Russia	2000
+Italy	2000
+China	2000
+China	2000
+South Korea	2000
+Australia	2000
+Russia	2000
+Great Britain	2000
+Sweden	2000
+Russia	2000
+France	2000
+Australia	2000
+Belarus	2000
+China	2000
+Slovenia	2000
+China	2000
+Switzerland	2000
+Russia	2000
+Russia	2000
+Kuwait	2000
+Romania	2000
+China	2000
+China	2000
+Czech Republic	2000
+Norway	2000
+Serbia and Montenegro	2000
+China	2004
+China	2004
+China	2004
+Australia	2004
+Italy	2004
+Serbia and Montenegro	2004
+Germany	2004
+Cuba	2004
+United States	2004
+India	2004
+Spain	2004
+Russia	2004
+Austria	2004
+Italy	2004
+Azerbaijan	2004
+Belarus	2004
+Russia	2004
+Germany	2004
+China	2004
+Germany	2004
+Czech Republic	2004
+Ukraine	2004
+North Korea	2004
+Finland	2004
+South Korea	2004
+China	2004
+Russia	2004
+Hungary	2004
+Czech Republic	2004
+Slovakia	2004
+China	2004
+United States	2004
+China	2004
+Russia	2004
+Bulgaria	2004
+South Korea	2004
+Russia	2004
+Russia	2004
+Italy	2004
+Australia	2004
+Azerbaijan	2004
+United States	2004
+Russia	2004
+Russia	2004
+United Arab Emirates	2004
+China	2004
+China	2004
+China	2008
+United States	2008
+France	2008
+China	2008
+Ukraine	2008
+Slovakia	2008
+Germany	2008
+Georgia	2008
+United States	2008
+Germany	2008
+China	2008
+Australia	2008
+Ukraine	2008
+Italy	2008
+Croatia	2008
+China	2008
+Russia	2008
+Mongolia	2008
+Finland	2008
+Czech Republic	2008
+Russia	2008
+China	2008
+United States	2008
+Finland	2008
+China	2008
+Russia	2008
+United States	2008
+United States	2008
+China	2008
+Germany	2008
+Slovenia	2008
+Italy	2008
+Cuba	2008
+United States	2008
+China	2008
+Italy	2008
+Norway	2008
+Germany	2008
+India	2008
+Russia	2008
+Ukraine	2008
+Czech Republic	2008
+South Korea	2008
+Slovakia	2012
+Italy	2012
+United States	2012
+France	2012
+Cuba	2012
+India	2012
+Russia	2012
+Romania	2012
+Belarus	2012
+Serbia	2012
+India	2012
+South Korea	2012
+South Korea	2012
+United States	2012
+China	2012
+Denmark	2012
+France	2012
+Italy	2012
+United States	2012
+China	2012
+Slovenia	2012
+Sweden	2012
+Belgium	2012
+South Korea	2012
+China	2012
+Croatia	2012
+Poland	2012
+United States	2012
+Slovakia	2012
+Kuwait	2012
+Qatar	2012
+China	2012
+China	2012
+Great Britain	2012
+China	2012
+China	2012
+Serbia	2012
+South Korea	2012
+Italy	2012
+Ukraine	2012
+Italy	2012
+Czech Republic	2012
+Time taken: 36.042 seconds, Fetched: 181 row(s)
+
