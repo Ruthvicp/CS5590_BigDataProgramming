@@ -1,0 +1,20 @@
+weight range : 35msec
+
+bald ppl :  15msec
+
+female_count : 2msec
+
+male_count : 1msec
+
+female_height : 1msec
+
+male_weight : 1msec
+
+q1 : 5msec
+
+vampire : 15msec
+
+facet : 30msec
+
+New God : 2msec
+
