@@ -1,7 +1,7 @@
 import os
 
-os.environ["SPARK_HOME"] = "C:\\spark-2.1.0-bin-hadoop2.7"
-os.environ["HADOOP_HOME"] = "C:\\winutils"
+os.environ["SPARK_HOME"] = "C:\\spark-2.3.1-bin-hadoop2.7\\spark-2.3.1-bin-hadoop2.7"
+os.environ["HADOOP_HOME"] = "C:\\winutils\\"
 from operator import add
 from pyspark import SparkContext
 
