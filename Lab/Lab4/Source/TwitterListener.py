@@ -6,10 +6,10 @@ import socket
 import json
 import time
 
-consumer_key = 'mSg1xMRSz8a8EqPY1sHcE0FPo'
-consumer_secret = 'VfalDVqLVhJ4CQb15Qb7YTx2hgkfPtpO6ogm6Vz07iIR7TqAaN'
-access_token = '3240653721-pmylXVMr6dX32S0omzX4hptZI2a2Aj79Popop7P'
-access_secret = 'DR8D9bYt2aZeh9jt8pugStIMMipZ9muS2oDsRT34MKxw3'
+consumer_key = '**'
+consumer_secret = '**'
+access_token = '**-**'
+access_secret = '**'
 
 
 auth = OAuthHandler(consumer_key, consumer_secret)
